@@ -14,6 +14,7 @@ public class Image {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    //경로
     private String filepath;
 
     @ManyToOne

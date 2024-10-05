@@ -18,9 +18,6 @@ public class Category {
     @Column(name="category_id")
     private long id;
 
-    @OneToMany(mappedBy = "board",cascade = CascadeType.ALL,orphanRemoval = true)
-    List<Category> categoryList = new ArrayList<>();
-
     @Column(nullable = false,length = 30)
     private String categoryName;
 }

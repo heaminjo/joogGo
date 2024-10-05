@@ -26,7 +26,7 @@ public class Board extends BaseDateEntity{
     //내용
     @Lob
     @Column(nullable = false)
-    private long content;
+    private String content;
 
     //위치
     @Column(nullable = false,length = 45)
@@ -36,17 +36,22 @@ public class Board extends BaseDateEntity{
     @Column(nullable = false)
     private int price;
 
+    @Column(nullable = false)
+    private int reliability;
     //조회수
     @Column(nullable = false)
     private int views;
 
     //회원
     //fetch = FetchType.LAZY : bored를 불러올때 member 까지 불러오진 않는다.
+    //다대일 양방향 회원 FK를 가진다.
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="member_id")
-    private String memberId;
+    private Member member;
 
     //카테고리
+    //다대일 단방향
+    //Category의 외래키를 가진다.
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="category_id")
     private Category categoryId;
