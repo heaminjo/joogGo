@@ -20,12 +20,9 @@ public class Dibs {
     //찜 목록 이름
     private String dibsName;
 
-    //찜 게시물
-    @OneToMany(mappedBy = "dibs",cascade = CascadeType.ALL,orphanRemoval = true)
-    private List<BoardDibs> boardDibsList = new ArrayList<>();
-
     //회원
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="member_id")
     private Member member;
+
 }
