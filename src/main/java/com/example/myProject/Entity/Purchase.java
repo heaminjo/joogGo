@@ -21,10 +21,6 @@ public class Purchase {
 
     private String purchaseName;
 
-    //판매내역 게시물
-    @OneToMany(mappedBy = "purchase",cascade = CascadeType.ALL,orphanRemoval = true)
-    private List<BoardPurchase> boardPurchaseList = new ArrayList<>();
-
     //회원
     @ManyToOne
     @JoinColumn(name = "member_id")
