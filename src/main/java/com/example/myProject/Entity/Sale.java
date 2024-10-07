@@ -23,10 +23,6 @@ public class Sale {
 
     private String saleName;
 
-    //판매내역 게시물
-    @OneToMany(mappedBy = "sale",cascade = CascadeType.ALL,orphanRemoval = true)
-    private List<BoardSale> boardSaleList = new ArrayList<>();
-
     //회원
     @ManyToOne
     @JoinColumn(name = "member_id")
