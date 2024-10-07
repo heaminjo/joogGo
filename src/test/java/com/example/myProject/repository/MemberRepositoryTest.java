@@ -32,4 +32,27 @@ public class MemberRepositoryTest {
         System.out.println(savedMember.toString());
 
     }
+    @Test
+    @DisplayName("이메일로 회원 검색")
+    public void emailMemberTest(){
+        Member member = createMemberInfo();
+        memberRepository.save(member);
+        Optional<Member> m = memberRepository.findByEmail("joheamin95@naver.com");
+
+        System.out.println(m.get().getAlise());
+    }
+
+    @Test
+    @DisplayName("로그인 테스트")
+    public void loginMemberTest(){
+        Member member = createMemberInfo();
+        memberRepository.save(member);
+        Optional<Member> m = memberRepository.findByLoginIdAndLoginPw("joheamn","geanea");
+        if(m.isPresent()){
+            System.out.println("로그인 성공");
+        }
+        else{
+            System.out.println("로그인 실패");
+        }
+    }
 }
