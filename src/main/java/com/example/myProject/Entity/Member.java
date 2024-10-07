@@ -48,11 +48,4 @@ public class Member extends BaseDateEntity {
     //이미지
     private String img;
 
-    //게시물
-    //일대다 양방향
-    //board의 FK를 갖지않기위해 mappedBy를 member로
-    //Board의 리스트를 생성
-    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Board> boards = new ArrayList<>();
-
 }
