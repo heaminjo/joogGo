@@ -5,8 +5,6 @@ import lombok.Setter;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @Setter
@@ -43,7 +41,7 @@ public class Board extends BaseDateEntity{
     private int views;
 
     //회원
-    //fetch = FetchType.LAZY : bored를 불러올때 member 까지 불러오진 않는다.
+    //fetch = FetchType.LAZY : board 를 불러올때 member 까지 불러오진 않는다.
     //다대일 양방향 회원 FK를 가진다.
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="member_id")
@@ -51,12 +49,22 @@ public class Board extends BaseDateEntity{
 
     //카테고리
     //다대일 단방향
-    //Category의 외래키를 가진다.
+    //Category 의 외래키를 가진다.
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="category_id")
     private Category categoryId;
 
-    //이미지
-    @OneToMany(mappedBy = "board",cascade = CascadeType.ALL,orphanRemoval = true)
-    List<Image> images = new ArrayList<>();
+    //찜 목록
+    @ManyToOne
+    @JoinColumn(name="dibs_id")
+    private Dibs dibs;
+
+    //판매 목록
+    @ManyToOne
+    @JoinColumn(name="sale_id")
+    private Sale sale;
+
+    @ManyToOne
+    @JoinColumn(name="purchase_id")
+    private Purchase purchase;
 }
