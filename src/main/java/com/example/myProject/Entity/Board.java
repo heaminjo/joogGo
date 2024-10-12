@@ -40,6 +40,13 @@ public class Board extends BaseDateEntity{
     @Column(nullable = false)
     private int views;
 
+    //찜 개수
+    private int likeBoard;
+    
+    //게시물 상태
+    @Enumerated(EnumType.STRING)
+    private Status status; 
+    
     //회원
     //fetch = FetchType.LAZY : board 를 불러올때 member 까지 불러오진 않는다.
     //다대일 양방향 회원 FK를 가진다.
